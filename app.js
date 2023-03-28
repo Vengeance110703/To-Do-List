@@ -1,13 +1,14 @@
 const express = require("express")
 const bodyParser = require("body-parser")
+const date = require(__dirname + "/date.js")
 
 const app = express();
 app.use(bodyParser.urlencoded({ extended: true }))
 app.set("view engine", "ejs")
 app.use(express.static("public"))
 
-let listItems = ["Buy Food", "Cook Food", "Eat Food"]
-let workItems = []
+const listItems = ["Buy Food", "Cook Food", "Eat Food"]
+const workItems = []
 
 app.listen(3000, () => {
     console.log("Server is listenig on port 3000")
@@ -15,12 +16,8 @@ app.listen(3000, () => {
 
 app.get("/", (req, res) => {
 
-    const weekday = ["Sunday", "Monday", "Tuesday", "Wednesday", "Thursday", "Friday", "Saturday"];
-    let d = new Date();
-    let day = weekday[d.getDay()]
-
     res.render("list", {
-        listTitle: day,
+        listTitle: date.getDay(),
         newItem: listItems,
     })
 
