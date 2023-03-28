@@ -7,7 +7,7 @@ app.set("view engine", "ejs")
 app.use(express.static("public"))
 
 let listItems = ["Buy Food", "Cook Food", "Eat Food"]
-let workItems = [];
+let workItems = []
 
 app.listen(3000, () => {
     console.log("Server is listenig on port 3000")
